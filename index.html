@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amazon Translate</title>
+    <script src="aws-sdk/dist/aws-sdk.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="box">
+        <h1 style="text-align: center">Amazon Translate</h1>
+        <table class="tg">
+            <tr>
+                <th align="left">
+                    Source Language Code:
+                    <select id="sourceLanguageCodeDropdown">
+                        <option value="en">en</option>
+                        <option value="af">af</option>
+                        <option value="sq">sq</option>
+                        <option value="am">am</option>
+                        <option value="ar">ar</option>
+                        <option value="hy">hy</option>
+                        <option value="az">az</option>
+                        <option value="bn">bn</option>
+                        <option value="bs">bs</option>
+                        <option value="bg">bg</option>
+                        <option value="fr-CA">fr-CA</option>
+                        <option value="ca">ca</option>
+                        <option value="zh">zh</option>
+                        <option value="zh-TW">zh-TW</option>
+                        <option value="hr">hr</option>
+                        <option value="cs">cs</option>
+                        <option value="da">da</option>
+                        <option value="fa-AF">fa-AF</option>
+                        <option value="nl">nl</option>
+                        <option value="et">et</option>
+                        <option value="fi">fi</option>
+                        <option value="fr">fr</option>
+                        <option value="ka">ka</option>         
+                        <option value="de">de</option>
+                        <option value="el">el</option>
+                        <option value="gu">gu</option>
+                        <option value="ht">ht</option>
+                        <option value="ha">ha</option>
+                        <option value="he">he</option>
+                        <option value="hi">hi</option>
+                        <option value="hu">hu</option>
+                        <option value="is">is</option>
+                        <option value="id">id</option>
+                        <option value="ga">ga</option>
+                        <option value="it">it</option>
+                        <option value="ja">ja</option>
+                        <option value="kn">kn</option>
+                        <option value="kk">kk</option>
+                        <option value="ko">ko</option>
+                        <option value="lv">lv</option>
+                        <option value="lt">lt</option>
+                        <option value="mk">mk</option>
+                        <option value="ms">ms</option>
+                        <option value="ml">ml</option>
+                        <option value="mt">mt</option>
+                        <option value="mr">mr</option>
+                        <option value="es-MX">es-MX</option>
+                        <option value="mn">mn</option>
+                        <option value="no">no</option>
+                        <option value="ps">ps</option>
+                        <option value="fa">fa</option>
+                        <option value="pl">pl</option>
+                        <option value="pt-PT">pt-PT</option>
+                        <option value="pt">pt</option>
+                        <option value="pa">pa</option>
+                        <option value="ro">ro</option>
+                        <option value="pt">pt</option>
+                        <option value="ru">ru</option>
+                        <option value="sr">sr</option>
+                        <option value="si">si</option>
+                        <option value="sk">sk</option>
+                        <option value="sl">sl</option>
+                        <option value="so">so</option>
+                        <option value="es">es</option>
+                        <option value="sw">sw</option>
+                        <option value="sv">sv</option>
+                        <option value="tl">tl</option>
+                        <option value="ta">ta</option>
+                        <option value="te">te</option>
+                        <option value="th">th</option>
+                        <option value="tr">tr</option>
+                        <option value="uk">uk</option>
+                        <option value="ur">ur</option>
+                        <option value="uz">uz</option>
+                        <option value="vi">vi</option>
+                        <option value="cy">cy</option>
+                    </select>
+                </th>
+                <th align="left">
+                    Target Language Code:
+                    <select id="targetLanguageCodeDropdown">
+                        <option value="en">en</option>
+                        <option value="af">af</option>
+                        <option value="sq">sq</option>
+                        <option value="am">am</option>
+                        <option value="ar">ar</option>
+                        <option value="hy">hy</option>
+                        <option value="az">az</option>
+                        <option value="bn">bn</option>
+                        <option value="bs">bs</option>
+                        <option value="bg">bg</option>
+                        <option value="fr-CA">fr-CA</option>
+                        <option value="ca">ca</option>
+                        <option value="zh">zh</option>
+                        <option value="zh-TW">zh-TW</option>
+                        <option value="hr">hr</option>
+                        <option value="cs">cs</option>
+                        <option value="da">da</option>
+                        <option value="fa-AF">fa-AF</option>
+                        <option value="nl">nl</option>
+                        <option value="et">et</option>
+                        <option value="fi">fi</option>
+                        <option value="fr">fr</option>
+                        <option value="ka">ka</option>         
+                        <option value="de">de</option>
+                        <option value="el">el</option>
+                        <option value="gu">gu</option>
+                        <option value="ht">ht</option>
+                        <option value="ha">ha</option>
+                        <option value="he">he</option>
+                        <option value="hi">hi</option>
+                        <option value="hu">hu</option>
+                        <option value="is">is</option>
+                        <option value="id">id</option>
+                        <option value="ga">ga</option>
+                        <option value="it">it</option>
+                        <option value="ja">ja</option>
+                        <option value="kn">kn</option>
+                        <option value="kk">kk</option>
+                        <option value="ko">ko</option>
+                        <option value="lv">lv</option>
+                        <option value="lt">lt</option>
+                        <option value="mk">mk</option>
+                        <option value="ms">ms</option>
+                        <option value="ml">ml</option>
+                        <option value="mt">mt</option>
+                        <option value="mr">mr</option>
+                        <option value="es-MX">es-MX</option>
+                        <option value="mn">mn</option>
+                        <option value="no">no</option>
+                        <option value="ps">ps</option>
+                        <option value="fa">fa</option>
+                        <option value="pl">pl</option>
+                        <option value="pt-PT">pt-PT</option>
+                        <option value="pt">pt</option>
+                        <option value="pa">pa</option>
+                        <option value="ro">ro</option>
+                        <option value="pt">pt</option>
+                        <option value="ru">ru</option>
+                        <option value="sr">sr</option>
+                        <option value="si">si</option>
+                        <option value="sk">sk</option>
+                        <option value="sl">sl</option>
+                        <option value="so">so</option>
+                        <option value="es">es</option>
+                        <option value="sw">sw</option>
+                        <option value="sv">sv</option>
+                        <option value="tl">tl</option>
+                        <option value="ta">ta</option>
+                        <option value="te">te</option>
+                        <option value="th">th</option>
+                        <option value="tr">tr</option>
+                        <option value="uk">uk</option>
+                        <option value="ur">ur</option>
+                        <option value="uz">uz</option>
+                        <option value="vi">vi</option>
+                        <option value="cy">cy</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <textarea id="inputText" name="inputText" rows="10" cols="50" placeholder="Text to translate..."></textarea>
+                </th>
+                <th>
+                    <textarea id="outputText" name="outputText" rows="10" cols="50" placeholder="Translated text..."></textarea>
+                </th>
+            </tr>
+            <tr>
+                <th align="left">
+                    <button type="button" name="translateButton" onclick="doTranslate()">Translate</button>
+                    <button type="button" name="synthesizeButton" onclick="doSynthesizeInput()">Synthesize Input Speech</button>
+                    <button type="button" name="clearButton" onclick="clearInputs()">Clear</button>
+                </th>
+                <th align="left">
+                    <button type="button" name="synthesizeButton" onclick="doSynthesizeOutput()">Synthesize Output Speech</button>
+                </th>
+            </tr>
+        </table>
+        <script type="text/javascript">
+            // set the focus to the input box
+            document.getElementById("inputText").focus();
+
+            /**
+             * Change the region and endpoint.
+             */
+            AWS.config.region = 'us-east-1'; // Region
+
+            /**
+             * In a production application you should use a secure method of authenticating uses, such as the ones 
+             * described here:
+             *   https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-browser.html
+             *
+             * Note that Amazon Translate does not work with Amazon Cognito Identity.
+             *
+             * For this example you place the credentials of an IAM user in the HTML page. The IAM user associated 
+             * with these credentials must have permissions to call Amazon Translate. We recommend using the following 
+             * permissions policy and nothing more, as anyone that has access to this HTML page will also have access to 
+             * these hard-coded credentials.
+             * {
+             *     "Version": "2012-10-17",
+             *     "Statement": [
+             *         {
+             *             "Action": [
+             *                 "translate:TranslateText",
+             *                 "polly:SynthesizeSpeech"
+             *             ],
+             *             "Resource": "*",
+             *             "Effect": "Allow"
+             *         }
+             *     ]
+             * }
+             * 
+             * For more information about the AWS Credentials object, see:
+             *   http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html
+             */
+            AWS.config.credentials = new AWS.Credentials("AKIAWR7L6FBQC2K523ML", "FcE8ggHaeuzdFOW+tbChQOrXLXLdkrmR33MX/Kd+");
+
+            var translate = new AWS.Translate({
+                region: AWS.config.region
+            });
+            var polly = new AWS.Polly();
+
+            function doTranslate() {
+                var inputText = document.getElementById('inputText').value;
+                if (!inputText) {
+                    alert("Input text cannot be empty.");
+                    exit();
+                }
+
+                // get the language codes
+                var sourceDropdown = document.getElementById("sourceLanguageCodeDropdown");
+                var sourceLanguageCode = sourceDropdown.options[sourceDropdown.selectedIndex].text;
+
+                var targetDropdown = document.getElementById("targetLanguageCodeDropdown");
+                var targetLanguageCode = targetDropdown.options[targetDropdown.selectedIndex].text;
+
+                var params = {
+                    Text: inputText,
+                    SourceLanguageCode: sourceLanguageCode,
+                    TargetLanguageCode: targetLanguageCode
+                };
+
+                translate.translateText(params, function(err, data) {
+                    if (err) {
+                        console.log(err, err.stack);
+                        alert("Error calling Amazon Translate. " + err.message);
+                        return;
+                    }
+                    if (data) {
+                        var outputTextArea = document.getElementById('outputText');
+                        outputTextArea.value = data.TranslatedText;
+                    }
+                });
+            }
+
+            function doSynthesizeInput() {
+                var text = document.getElementById('inputText').value.trim();
+                if (!text) {
+                    return;
+                }
+                var sourceLanguageCode = document.getElementById("sourceLanguageCodeDropdown").value;
+                doSynthesize(text, sourceLanguageCode);
+            }
+
+            function doSynthesizeOutput() {
+                var text = document.getElementById('outputText').value.trim();
+                if (!text) {
+                    return;
+                }
+                var targetLanguageCode = document.getElementById("targetLanguageCodeDropdown").value;
+                doSynthesize(text, targetLanguageCode);
+            }
+
+            function doSynthesize(text, languageCode) {
+                var voiceId;
+                switch (languageCode) {
+                    case "de":
+                        voiceId = "Marlene";
+                        break;
+                    case "en":
+                        voiceId = "Joanna";
+                        break;
+                    case "es":
+                        voiceId = "Penelope";
+                        break;
+                    case "fr":
+                        voiceId = "Celine";
+                        break;
+                    case "pt":
+                        voiceId = "Vitoria";
+                        break;
+                    case "ar":
+                        voiceId = "Zeina";
+                        break;
+                    case "da":
+                        voiceId = "Naja";
+                        break;
+                    case "nl":
+                        voiceId = "Lotte";
+                        break;
+                    case "hi":
+                        voiceId = "Aditi";
+                        break;
+                    case "is":
+                        voiceId = "Karl";
+                        break;
+                    case "it":
+                        voiceId = "Bianca";
+                        break;
+                    case "ja":
+                        voiceId = "Mizuki";
+                        break;
+                    case "ko":
+                        voiceId = "Seoyeon";
+                        break;
+                    case "no":
+                        voiceId = "Liv";
+                        break;
+                    case "pl":
+                        voiceId = "Ewa";
+                        break;
+                    case "ro":
+                        voiceId = "Carmen";
+                        break;
+                    case "ru":
+                        voiceId = "Tatyana";
+                        break;
+                    case "sv":
+                        voiceId = "Astrid";
+                        break;
+                    case "tr":
+                        voiceId = "Filiz";
+                        break;
+                    case "cy":
+                        voiceId = "Gwyneth";
+                        break;
+                    default:
+                        voiceId = null;
+                        break;
+                }
+                if (!voiceId) {
+                    alert("Speech synthesis unsupported for language code: \"" + languageCode + "\"");
+                    return;
+                }
+                var params = {
+                    OutputFormat: "mp3",
+                    SampleRate: "8000",
+                    Text: text,
+                    TextType: "text",
+                    VoiceId: voiceId
+                };
+                polly.synthesizeSpeech(params, function(err, data) {
+                    if (err) {
+                        console.log(err, err.stack); // an error occurred
+                        alert("Error calling Amazon Polly. " + err.message);
+                    } else {
+                        var uInt8Array = new Uint8Array(data.AudioStream);
+                        var arrayBuffer = uInt8Array.buffer;
+                        var blob = new Blob([arrayBuffer]);
+                        var url = URL.createObjectURL(blob);
+
+                        audioElement = new Audio([url]);
+                        audioElement.play();
+                    }
+                });
+            }
+
+            function clearInputs() {
+                document.getElementById('inputText').value = "";
+                document.getElementById('outputText').value = "";
+                document.getElementById("sourceLanguageCodeDropdown").value = "en";
+                document.getElementById("targetLanguageCodeDropdown").value = "en";
+            }
+        </script>
+    </div>
+</body>
+
+</html>

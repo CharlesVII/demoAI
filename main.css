@@ -1,0 +1,25 @@
+h1{
+    color: black;
+}
+
+body{
+    display: flex;
+    background-image: url("/pngtree-seamless-repeat-pattern-with-flowers-and-leaves-scandinavian-childish-drawing-background-image_329833.jpg");
+    
+}
+
+.box{
+    height: auto;
+    width: 800px;
+    background-color: #fafafa;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    border-radius: 30px;
+    border: 5px ridge #a5b6b1;
+}
+
+
+
+
+
